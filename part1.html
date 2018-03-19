@@ -2,7 +2,6 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>Making your first Phaser 3 Game - Part 1</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.1.1/dist/phaser.js"></script>
     <style type="text/css">
         body {
@@ -18,6 +17,13 @@
         type: Phaser.AUTO,
         width: 800,
         height: 600,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: {y:300},
+                debug: false
+            }
+        },
         scene: {
             preload: preload,
             create: create,
@@ -29,10 +35,12 @@
 
     function preload ()
     {
+        this.load.image('background', 'assets/sky.png');
     }
 
     function create ()
     {
+        this.add.image(400, 300, 'background');
     }
 
     function update ()
